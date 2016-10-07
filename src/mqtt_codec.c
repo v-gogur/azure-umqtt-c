@@ -540,7 +540,7 @@ static int prepareheaderDataInfo(MQTTCODEC_INSTANCE* codecData, uint8_t remainLe
         codecData->storeRemainLen[codecData->remainLenIndex++] = remainLen;
         if (remainLen < 0x7f)
         {
-            int multiplier = 1;
+            uint32_t multiplier = 1;
             int totalLen = 0;
             size_t index = 0;
             uint8_t encodeByte = 0;
@@ -550,7 +550,7 @@ static int prepareheaderDataInfo(MQTTCODEC_INSTANCE* codecData, uint8_t remainLe
                 totalLen += (encodeByte & 127) * multiplier;
                 multiplier *= NEXT_128_CHUNK;
 
-                if (multiplier > 128 * 128 * 128)
+                if (multiplier > ((uint32_t)128 * (128 * 128)))
                 {
                     result = __LINE__;
                     break;
