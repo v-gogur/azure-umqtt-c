@@ -10,7 +10,6 @@
 
 #include "mqtt_client_sample.h"
 #include "azure_umqtt_c/mqtt_client.h"
-#include "azure_c_shared_utility/socketio.h"
 #include "azure_c_shared_utility/platform.h"
 
 static const char* TOPIC_NAME_A = "msgA";
@@ -159,12 +158,16 @@ void mqtt_client_sample_run()
             options.useCleanSession = true;
             options.qualityOfServiceValue = DELIVER_AT_MOST_ONCE;
 
-            SOCKETIO_CONFIG config = {"test.mosquitto.org", PORT_NUM_UNENCRYPTED, NULL};
+            TLSIO_CONFIG config = {"test.mosquitto.org", PORT_NUM_ENCRYPTED};
 
-            XIO_HANDLE xio = xio_create(socketio_get_interface_description(), &config);
+            XIO_HANDLE xio = xio_create(platform_get_default_tlsio(), &config);
             if (xio == NULL)
             {
                 (void)printf("xio_create failed\r\n");
+            }
+            else if ( xio_setoption(xio, "apn", "wholesale") )
+            {
+            	(void)printf("Failed to set access point name (\"apn\") for TLS XIO layer\n");
             }
             else
             {
