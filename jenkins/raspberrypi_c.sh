@@ -19,7 +19,7 @@
 	else
 	echo "$1" not found. Please make sure that "$1" is installed and available in the path.
 
-exit 1
+#exit 1
 	fi
 	}
 	# ----------------------------------------------------------------------------- 
@@ -55,7 +55,7 @@ exit 1
 	echo ---------- Creating toolchain cmake file ---------- 
 	FILE="$build_root/build_all/linux/toolchain-rpi.cmake" 
 	
-	/bin/cat <<EOM >$FILE
+	#/bin/cat <<EOM >$FILE
 	INCLUDE(CMakeForceCompiler) 
 	
 	SET(CMAKE_SYSTEM_NAME Linux) # this one is important 
@@ -73,7 +73,7 @@ exit 1
 	# for libraries and headers in the target directories
 	SET(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY) 
 	SET(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY) 
-	EOM
+	#EOM
 	
 	
 	# ----------------------------------------------------------------------------- 
@@ -81,7 +81,7 @@ exit 1
 	# -----------------------------------------------------------------------------
 	echo ---------- Building the SDK by executing build.sh script ---------- 
 	cd $build_root/build_all/linux 
-	./build.sh --toolchain-file toolchain-rpi.cmake -cl --sysroot=$RPI_ROOT 
+	./build.sh --toolchain-file toolchain-rpi.cmake --no-mqtt -cl --sysroot=$RPI_ROOT 
 	
 	popd
 	[ $? -eq 0 ] || exit $?
