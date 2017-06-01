@@ -18,7 +18,8 @@
 	return 1
 	else
 	echo "$1" not found. Please make sure that "$1" is installed and available in the path.
-	exit 1
+
+exit 1
 	fi
 	}
 	# ----------------------------------------------------------------------------- 
@@ -81,4 +82,6 @@
 	echo ---------- Building the SDK by executing build.sh script ---------- 
 	cd $build_root/build_all/linux 
 	./build.sh --toolchain-file toolchain-rpi.cmake --no-mqtt -cl --sysroot=$RPI_ROOT 
+	
+	popd
 	[ $? -eq 0 ] || exit $?
