@@ -1,4 +1,4 @@
-#!/bin/bash
+	#!/bin/bash
 	# Copyright (c) Microsoft. All rights reserved. Licensed under the MIT 
 	# license. See LICENSE file in the project root for full license 
 	# information.
@@ -18,7 +18,7 @@
 	return 1
 	else
 	echo "$1" not found. Please make sure that "$1" is installed and available in the path.
-#exit 1
+	exit 1
 	fi
 	}
 	# ----------------------------------------------------------------------------- 
