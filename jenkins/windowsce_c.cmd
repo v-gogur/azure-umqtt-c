@@ -2,11 +2,6 @@
 
 @REM Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-setlocal
-
-
-
-set build-root=%~dp0..
 
 rem // resolve to fully qualified path
 
