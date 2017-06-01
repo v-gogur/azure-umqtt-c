@@ -81,7 +81,7 @@ exit 1
 	# -----------------------------------------------------------------------------
 	echo ---------- Building the SDK by executing build.sh script ---------- 
 	cd $build_root/build_all/linux 
-	./build.sh --toolchain-file toolchain-rpi.cmake --no-mqtt -cl --sysroot=$RPI_ROOT 
+	./build.sh --toolchain-file toolchain-rpi.cmake -cl --sysroot=$RPI_ROOT 
 	
 	popd
 	[ $? -eq 0 ] || exit $?
