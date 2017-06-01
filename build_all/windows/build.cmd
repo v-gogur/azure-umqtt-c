@@ -46,8 +46,7 @@ rem ----------------------------------------------------------------------------
 
 
 
-rem // default build options
-
+rem // default build option
 set build-clean=0
 
 set build-config=Debug
@@ -96,8 +95,8 @@ if not %errorlevel%==0 exit /b %errorlevel%
 
 
 
-//rem Currently, only building sample is supported
+rem Currently, only building sample is supported
 
-//msbuild "%USERPROFILE%\cmake_su_ce8\samples\iot_c_utility\iot_c_utility.vcxproj
+rem msbuild "%USERPROFILE%\cmake_su_ce8\samples\iot_c_utility\iot_c_utility.vcxproj
 
-//if not %errorlevel%==0 exit /b %errorlevel%
+rem if not %errorlevel%==0 exit /b %errorlevel%
